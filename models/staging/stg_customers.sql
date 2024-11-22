@@ -1,6 +1,6 @@
 SELECT customer_id,
        concat(first_name,' ',last_name) AS customer_name,
-       cast(phone AS varchar(15)) AS customer_phone_number,
+       phone AS customer_phone_number,
        email AS customer_email,
        street as customer_street,
        city as customer_city,
