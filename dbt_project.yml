@@ -43,11 +43,11 @@ models:
       +persist_docs:
         relation:  true
         columns: true
-    #intermediate:
-    #  +materialized: view
-     # +persist_docs: 
-     #   relation: true
-      #  columns: true
+    intermediate:
+      +materialized: view
+      +persist_docs: 
+        relation: true
+        columns: true
         
     #mart:
      # +materialized: table
