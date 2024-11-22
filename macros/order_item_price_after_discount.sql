@@ -1,3 +1,3 @@
-{% macro total_order_item_amount(price_column, discount_column,quantity_column) %}
-    ({{price_column}}*{{discount_column}})*{{quantity_column}}
+{% macro order_item_price_after_discount(price_column, discount_column,quantity_column) %}
+   ({{price_column}}*(1-{{discount_column}}))*{{quantity_column}}
 {% endmacro %}
