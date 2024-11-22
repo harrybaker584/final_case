@@ -1,9 +1,9 @@
 SELECT customer_id,
        concat(first_name,' ',last_name) AS customer_name,
-       cast(phone as varchar(15)) AS customer_phone_number,
+       cast(phone AS varchar(15)) AS customer_phone_number,
        email AS customer_email,
-       street,
-       city,
-       state,
-       zip_code
+       street as customer_street,
+       city as customer_city,
+       state as customer_state,
+       zip_code as customer_zip_code
 FROM {{source('local_bike','customers')}}
