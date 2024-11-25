@@ -21,6 +21,7 @@ inner join {{ref('stg_order_items')}} as oi on io.order_id=oi.order_id
 )
 
 SELECT io.customer_id,
+       c.customer_name,
        io.customer_city,
        io.customer_state,
        o.total_amount_spent,
@@ -31,3 +32,4 @@ SELECT io.customer_id,
 FROM {{ref('int_orders')}} as io
 INNER JOIN orders_summary as o on io.customer_id = o.customer_id
 LEFT JOIN product_summary as p on o.customer_id = p.customer_id AND p.rn=1
+LEFT JOIN {{ref('stg_customers')}} as c on o.customer_id=c.customer_id
