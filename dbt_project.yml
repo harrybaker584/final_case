@@ -49,11 +49,11 @@ models:
         relation: true
         columns: true
         
-    #mart:
-     # +materialized: table
-      #+persist_docs:
-      #  relation: true
-      #  columns: true
+    mart:
+      +materialized: table
+      +persist_docs:
+        relation: true
+        columns: true
 vars:
   accepted_state_values_list : ['CA','TX','NY']
   accepect_order_status_value_list : [1,2,3,4]
