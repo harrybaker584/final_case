@@ -15,6 +15,7 @@ SELECT
     o.order_status,
     o.order_date,
     o.store_id,
+    s.store_name,
     o.staff_id,
     c.customer_city,
     c.customer_state,
@@ -25,4 +26,5 @@ SELECT
 FROM {{ref('stg_orders')}} AS o
 left join {{ref('stg_customers')}} AS c ON o.customer_id = c.customer_id
 left join order_item_grouped_by_order AS oi ON o.order_id= oi.order_id
+left join {{ref('stg_stores')}} AS s ON o.store_id = s.store_id
 
