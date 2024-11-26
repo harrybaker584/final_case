@@ -43,7 +43,7 @@ models:
           - not_null
           - relationships:
               name: order_id_foreign_key_in_stg_order_items
-              to: ref('stg_order')
+              to: ref('stg_orders')
               field: order_id
 
       - name: item_id
