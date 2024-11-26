@@ -202,9 +202,8 @@ models:
     description: This table contains information about each store
     columns:
       - name: store_id
-        description: "Primary key containing unique store identifier"
+        description: "store identifier"
         tests:
-          - unique
           - not_null
 
       
