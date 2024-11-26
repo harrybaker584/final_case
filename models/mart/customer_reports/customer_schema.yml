@@ -6,3 +6,7 @@ models:
         columns:
           - name: customer_state
             description: "Primary Key, 2 letter identifier for a region(in this case state)"
+            tests:
+              - unique
+              - not_null
+                  
