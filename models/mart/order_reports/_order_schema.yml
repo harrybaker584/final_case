@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: daily_order_report
+    description: '{{doc("daily_order_report")}}'
+
+  - name: weekly_order_report
+    description: '{{doc("weekly_order_report")}}'   
+  
+  - name: monthly_order_report
+    description: '{{doc("monthly_order_report")}}'
+
+  - name: quarterly_order_report
+    description: '{{docs("quarterly_order_report")}}'
+  
+  - name: yearly_order_report
+    description: '{{docs("yearly_order_report")}}' 
+  
+  
+

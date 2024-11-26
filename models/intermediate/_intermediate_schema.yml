@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: int_customers
+    description: '{{doc("int_customers")}}'
+    columns:
+      - name: customer_id
+        description: "Primary key containing unique customer identifier"
+        tests:
+          - unique
+          - not_null
+  
+  - name: int_orders
+    description: '{{doc("int_orders")}}'
+    columns:
+      - name: order_id
+        description: "Primary key containing unique order identifier"
+        tests:
+          - unique
+          - not_null
+  
+  - name: int_products
+    description: '{{doc("int_products")}}'
+    columns:
+      - name: product_id
+        description: "Primary key containing unique product identifier"
+        tests:
+          - unique
+          - not_null
+              
+              
+
+        
+              

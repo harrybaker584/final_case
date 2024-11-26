@@ -1,4 +1,4 @@
-version: 1
+version: 2
 
 models:
       - name: regional_comparison
@@ -6,6 +6,15 @@ models:
         columns:
           - name: customer_state
             description: "Primary Key, 2 letter identifier for a region(in this case state)"
+            tests:
+              - unique
+              - not_null
+
+      - name: top_customers
+        description: '{{ doc("top_customers")}}'
+        columns:
+          - name: customer_id
+            description: "Primary key containing unique customer identifier"
             tests:
               - unique
               - not_null

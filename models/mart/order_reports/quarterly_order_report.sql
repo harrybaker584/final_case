@@ -1,3 +1,9 @@
+{{ config(
+    tags=["quarterly"]
+) }}
+
+select ...
+
 SELECT
     DATE_TRUNC(report_date, quarter) as report_date,
     store_name,

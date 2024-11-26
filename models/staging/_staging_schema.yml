@@ -1,0 +1,216 @@
+version: 2
+
+models:
+  - name: stg_brands
+    description: This table contains information about brands
+    columns:
+      - name: brand_id 
+        description: "Primary Key containing unique brand identifier"
+        tests:
+          - unique
+          - not_null
+              
+  - name: stg_categories
+    description: "This table contains information about item categories"
+    columns:
+      - name: category_id
+        description: "Primary Key containing unique category identifier"
+        tests:
+          - unique
+          - not_null
+  
+  - name: stg_customers
+    description: This table contains information on customers
+    columns:
+      - name: customer_id
+        description: "Primary key containing unique customer identifier"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_order_items
+    description: This table contains information about items in an order
+    columns:
+      - name: order_item_id
+        description: "Primary key containing unique order item id, obtained by concatenating order and item ids"
+        tests:
+          - unique
+          - not_null
+
+      - name: order_id
+        description: "Foreign key to order table, links total order to each item in the order"
+        tests:
+          - not_null
+          - relationships:
+              name: order_id_foreign_key_in_stg_order_items
+              to: ref('stg_order')
+              field: order_id
+
+      - name: item_id
+        description: "Identifier for an item within an order "
+        tests:
+          - not_null
+      
+      - name: product_id
+        description: "Foreign key to product table, links item in an order to specific product"
+        tests:
+          - not_null
+          - relationships:
+              name: product_id_foreign_key_in_stg_order_items
+              to: ref('stg_products')
+              field: product_id
+      
+      - name: percentage_discount
+        description: "Convert decimal to percentage discount"
+        tests:
+          - assert_discount_percent_is_percent
+
+      - name: discount_amount
+        description: "Calculates the amount in dollars of the discount on an item"
+        tests:
+          - is_positive("stg_order_items","order_id","discount_amount")
+
+      - name: total_order_item_price
+        description: "Calculates the total price of an order by applying the discount to list price and multiplying by the item quantity in the order"
+        tests:
+          - is_positive("stg_order_items","order_id","quantity")
+          
+  - name: stg_orders
+    description: This table contains order specific information
+    columns:
+      - name: order_id
+        description: "Primary key containing the unique order identifier"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Foreign key to customer table, links the order to the specific customer"
+        tests:
+          - not_null
+          - relationships:
+              name: customer_id_foreign_key_in_stg_orders
+              to: ref('stg_customers')
+              field: customer_id
+      
+      - name: order_status
+        description: "Numeric identifier for the status of an order"
+        tests:
+          - accepted_values:
+              name: accepted_order_status_values
+              values: var('accepect_order_status_value_list')
+      
+      - name: store_id
+        description: "Foreign key to stores table, links the order to the store it was made at"
+        tests:
+          - not_null
+          - relationships:
+              name: store_id_foreing_key_in_stg_orders
+              to: ref('stg_stores')
+              field: store_id
+      
+      - name: staff_id
+        description: "Foreign key to staffs table, links order to staff member that placed it"
+        tests:
+          - not_null
+          - relationships:
+              name: staff_id_foreign_key_in_stg_orders
+              to: ref('stg_staffs')
+              field: staff_id
+  
+  - name: stg_products
+    description: This table contains information on individual products
+    columns:
+      - name: product_id
+        description: "Primary key containing unique product identifier"
+        tests:
+          - unique
+          - not_null
+
+      - name: brand_id
+        description: "Foreign key to brands table, links the product to it's brand"
+        tests:
+          - not_null
+          - relationships:
+              name: brand_id_forein_key_in_stg_products
+              to: ref('stg_brands')
+              field: brand_id
+      
+      - name: category_id
+        description: "Foreign key to categories table, links the product to the category it belongs to"
+        tests:
+          - not_null
+          - relationships:
+              name: category_id_foreign_key_in_stg_products
+              to: ref('stg_categories')
+              field: category_id
+      
+  - name: stg_staffs
+    description: This table contains information on staff members
+    columns:
+      - name: staff_id
+        description: "Primary key containing unique staff identifier"
+        tests:
+          - unique
+          - not_null
+      
+      - name: store_id
+        description: "Foreign key to stores table, links staff member to the store worked at"
+        tests:
+          - unique
+          - relationships:
+              name: store_id_foreign_key_in_stg_staffs
+              to: ref('stg_stores')
+              field: store_id
+      
+      - name: manager_id
+        description: "Identifier to determine staff member's manager"
+
+  - name: stg_stocks
+    description: This table contains information on product stocks
+    columns:
+      - name: store_product_id
+        description: "Primary key identifying the product and what store it is at, obtained by concatenating the product id and store id"
+        tests:
+          - unique
+          - not_null
+      
+      - name: store_id
+        description: "Foreign key to stores table, links stock to which store it's at"
+        tests:
+          - not_null
+          - relationships:
+              name: store_id_foreign_key_in_stg_stocks
+              to: ref('stg_stores')
+              field: store_id
+      
+      - name: product_id
+        description: "Foreign key to products table, links stock to specific product"
+        tests:
+          - not_null
+          - relationships:
+              name: product_id_foreign_key_in_stg_stocks
+              to: ref('stg_products')
+              field: product_id
+      
+      - name: quantity
+        description: "Quantity of specific item at a store"
+        tests:
+          - not_null
+          - is_positive("stg_stocks","store_product_id","quantity")
+
+  - name: stg_stores
+    description: This table contains information about each store
+    columns:
+      - name: store_id
+        description: "Primary key containing unique store identifier"
+        tests:
+          - unique
+          - not_null
+
+      
+              
+              
+             
+              
+              
+              

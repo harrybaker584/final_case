@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: staff_sales
+    description: '{{doc("staff_sales")}}'
+    

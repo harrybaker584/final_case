@@ -1,3 +1,6 @@
+{{ config(
+    tags=["weekly"]
+) }}
 SELECT
     DATE_TRUNC(report_date, week) as report_date,
     store_name,
