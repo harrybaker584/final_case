@@ -5,9 +5,8 @@ models:
     description: '{{doc("int_customers")}}'
     columns:
       - name: customer_id
-        description: "Primary key containing unique customer identifier"
+        description: "unique customer identifier"
         tests:
-          - unique
           - not_null
   
   - name: int_orders

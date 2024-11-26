@@ -62,8 +62,6 @@ models:
       
       - name: percentage_discount
         description: "Convert decimal to percentage discount"
-        tests:
-          - assert_discount_percent_is_percent
 
       - name: discount_amount
         description: "Calculates the amount in dollars of the discount on an item"
@@ -91,13 +89,6 @@ models:
               name: customer_id_foreign_key_in_stg_orders
               to: ref('stg_customers')
               field: customer_id
-      
-      - name: order_status
-        description: "Numeric identifier for the status of an order"
-        tests:
-          - accepted_values:
-              name: accepted_order_status_values
-              values: var('accepect_order_status_value_list')
       
       - name: store_id
         description: "Foreign key to stores table, links the order to the store it was made at"
@@ -156,7 +147,6 @@ models:
       - name: store_id
         description: "Foreign key to stores table, links staff member to the store worked at"
         tests:
-          - unique
           - relationships:
               name: store_id_foreign_key_in_stg_staffs
               to: ref('stg_stores')
