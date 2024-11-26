@@ -1,8 +1,6 @@
 version: 1
 
 models:
-  mart:
-    customer_reports:
       - name: regional_comparisson
         description: '{{ doc("regional_comparison") }}'
         columns:
