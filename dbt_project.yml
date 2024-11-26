@@ -55,7 +55,7 @@ models:
         relation: true
         columns: true
       customer_reports:
-        +schema: customer_schema
+        +schema: _customer_schema
 
 
 vars:
