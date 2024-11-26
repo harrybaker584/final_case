@@ -57,6 +57,12 @@ models:
         columns: true
       customer_reports:
         +schema: _customer_schema
+      order_reports:
+        +schema: _order_schema
+      product_reports:
+        +schema: _product_schema
+      staff_reports:
+        +schema: _staff_schema
 
 
 vars:

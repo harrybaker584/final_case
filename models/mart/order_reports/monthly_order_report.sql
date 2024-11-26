@@ -1,3 +1,9 @@
+{{ config(
+    tags=["monthly"]
+) }}
+
+select ...
+
 SELECT
     DATE_TRUNC(report_date, MONTH) as report_date,
     store_name,

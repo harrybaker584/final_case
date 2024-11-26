@@ -11,4 +11,6 @@ This table contains information about sales across different regions (states)
  - ** FAVOURITE PRODUCT ID: ** The product_id for the most purchased product in the region
  - ** FAVOURITE PRODUCT NAME:** The product name for the most purchased product in the region
 
+ This allows for analysis of regional performance and specifics such as favoured products/categories
+
 {% enddocs %}

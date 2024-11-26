@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: top_hundred_products
+    description: '{{doc("top_hundred_products")}}'
+  - name: top_performing_brands
+    description: '{{doc("top_performing_brands")}}'
+  - name: top_performing_categories
+    description: '{{doc("top_performing_categories")}}'
+    
