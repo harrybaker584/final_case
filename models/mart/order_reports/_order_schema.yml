@@ -11,10 +11,10 @@ models:
     description: '{{doc("monthly_order_report")}}'
 
   - name: quarterly_order_report
-    description: '{{docs("quarterly_order_report")}}'
+    description: '{{doc("quarterly_order_report")}}'
   
   - name: yearly_order_report
-    description: '{{docs("yearly_order_report")}}' 
+    description: '{{doc("yearly_order_report")}}' 
   
   
 
