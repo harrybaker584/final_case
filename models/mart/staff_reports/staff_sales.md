@@ -7,3 +7,5 @@ This generates an overview of sales made by each staff member with the following
 - ** TOTAL DISTINCT ITEMS SOLD:** Total number of specific items sold by staff member
 
 This allows for comparative analysis of staff members and stores by sales metrics. 
+
+{% enddocs %}
