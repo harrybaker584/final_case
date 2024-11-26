@@ -43,6 +43,7 @@ models:
       +persist_docs:
         relation:  true
         columns: true
+      +schema: _staging_schema
     intermediate:
       +materialized: view
       +persist_docs: 
