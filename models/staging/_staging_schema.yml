@@ -54,7 +54,7 @@ models:
       - name: product_id
         description: "Foreign key to product table, links item in an order to specific product"
         tests:
-          - not_null:
+          - not_null
           - relationships:
               name: product_id_foreign_key_in_stg_order_items
               to: ref('stg_products')
@@ -105,7 +105,7 @@ models:
       - name: staff_id
         description: "Foreign key to staffs table, links order to staff member that placed it"
         tests:
-          - not_null:
+          - not_null
           - relationships:
               name: staff_id_foreign_key_in_stg_orders
               to: ref('stg_staffs')
