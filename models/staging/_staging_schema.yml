@@ -62,13 +62,19 @@ models:
       
       - name: percentage_discount
         description: "Convert decimal to percentage discount"
+        tests:
+          - assert_discount_percent_is_percent
 
       - name: discount_amount
         description: "Calculates the amount in dollars of the discount on an item"
+        tests:
+          - is_positive("stg_order_items","order_id","discount_amount")
 
       - name: total_order_item_price
         description: "Calculates the total price of an order by applying the discount to list price and multiplying by the item quantity in the order"
-
+        tests:
+          - is_positive("stg_order_items","order_id","quantity")
+          
   - name: stg_orders
     description: This table contains order specific information
     columns:
@@ -190,6 +196,8 @@ models:
         description: "Quantity of specific item at a store"
         tests:
           - not_null
+          - is_positive("stg_stocks","store_product_id","quantity")
+
   - name: stg_stores
     description: This table contains information about each store
     columns:
