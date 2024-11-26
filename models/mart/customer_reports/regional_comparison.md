@@ -1,4 +1,4 @@
-{% docs int_sales_database_order %}
+{% docs regional_comparison %}
 
 This table contains information about sales across different regions (states)
  - ** TOTAL REGION SPENDING :**  The total sum of customer spending in the region
