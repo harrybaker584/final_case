@@ -1,8 +1,8 @@
 version: 1
 
 models:
-  - name: regional_comparisson.sql
-    description: '{{ doc("regional_comparisson") }}'
+  - name: regional_comparisson
+    description: '{{ doc("regional_comparison") }}'
     columns:
       - name: customer_state
         description: "Primary Key, 2 letter identifier for a region(in this case state)"
